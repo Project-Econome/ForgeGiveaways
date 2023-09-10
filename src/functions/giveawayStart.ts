@@ -54,10 +54,10 @@ export default new NativeFunction({
         channelID = ctx.channel?.id,
         hosterID = ctx.user?.id
     ]) {
-        await (ctx.client.giveawayManager as GiveawayManager).manager.createGiveaway({
+        await (ctx.client.giveawayManager as GiveawayManager).manager?.createGiveaway({
             guild_id: `${guildID}`,
             channel: channelID as unknown as TextChannel,
-            hoster_id: `${hosterID}`,
+            hoster_id: `${hosterID?.toString()}`,
             reward,
             time,
             winnerCount: winners
