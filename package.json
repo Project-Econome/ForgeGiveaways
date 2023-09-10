@@ -1,0 +1,27 @@
+{
+  "name": "forgegiveaways",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "compile": "tsc -p tsconfig.json -w"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.6.0",
+    "@typescript-eslint/eslint-plugin": "^6.6.0",
+    "@typescript-eslint/parser": "^6.6.0",
+    "discord.js": "^14.13.0",
+    "dotenv": "^16.3.1",
+    "eslint": "^8.49.0",
+    "tslib": "^2.6.2",
+    "typedoc": "^0.25.1",
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "forgescript": "^1.0.4",
+    "tiny-typed-emitter": "^2.1.0"
+  }
+}
