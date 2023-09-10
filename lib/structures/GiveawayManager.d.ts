@@ -4,7 +4,6 @@ export declare class GiveawayManager extends ForgeExtension {
     name: string;
     description: string;
     version: string;
-    private client;
     manager: PrimitiveManager<"json"> | null;
     private options;
     constructor(options?: {

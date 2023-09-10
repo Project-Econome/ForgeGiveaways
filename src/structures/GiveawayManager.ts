@@ -7,18 +7,16 @@ export class GiveawayManager extends ForgeExtension {
     description = "Handle giveaways easily.";
     version = "0.0.1";
 
-    private client: ForgeClient | null;
     public manager: PrimitiveManager<"json"> | null;
     private options: { path: `./${string}.json` } | undefined;
     constructor(options?: { path: `./${string}.json` }) {
         super();
-        this.client = null;
         this.manager = null;
         this.options = options;
     }
 
     init(client: ForgeClient) {
-        // Loafing built-in events.
+        // Loading built-in events.
         EventManager.load("giveaway", `${__dirname.replace("structures", "events")}`);
 
         // Loading built-in functions.
@@ -30,7 +28,6 @@ export class GiveawayManager extends ForgeExtension {
             path: this.options?.path ?? "./giveaways.json"
         });
         this.manager.start();
-        this.client = client;
         client.giveawayManager = this;
     }
 }

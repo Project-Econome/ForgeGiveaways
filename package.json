@@ -1,14 +1,19 @@
 {
   "name": "forgegiveaways",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "version": "0.0.1",
+  "description": "ForgeGiveaways is a package that extends the functionality of ForgeScript.",
+  "main": "./lib/index.js",
   "scripts": {
     "compile": "tsc -p tsconfig.json -w"
   },
   "keywords": [],
-  "author": "",
+  "author": "Cyberghxst",
   "license": "MIT",
+  "packageManager": "pnpm@8.1.1",
+  "publishConfig": {
+    "access": "public",
+    "tag": "latest"
+  },
   "devDependencies": {
     "@types/node": "^20.6.0",
     "@typescript-eslint/eslint-plugin": "^6.6.0",
