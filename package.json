@@ -4,6 +4,7 @@
   "description": "ForgeGiveaways is a package that extends the functionality of ForgeScript.",
   "main": "./lib/index.js",
   "scripts": {
+    "preinstall": "tsc",
     "compile": "tsc -p tsconfig.json -w"
   },
   "keywords": [],
