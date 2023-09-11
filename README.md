@@ -3,6 +3,9 @@ ForgeGiveaways is a package that extends the functionality of ForgeScript. With 
 
 Try it out and see how it can enhance your Discord experience!
 
+## THIS EXTENSION IS UNDER WORKS
+Is not finished, expect more features soon.
+
 ## Basic Setup
 Download this repo as npm package.
 `npm i github:Cyberghxst/ForgeGiveaways`

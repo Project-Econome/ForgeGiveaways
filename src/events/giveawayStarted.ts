@@ -9,7 +9,7 @@ export default new EventHandler({
     listener(data: giveaway, channel: TextChannel, hoster: string) {
         console.log("giveawayStart event fired");
         console.log(data, channel.id, hoster);
-        const commands = this.commands.getCustom<any>("giveawayStart");
+        const commands = this.commands.getCustom<any>("giveawayStarted");
         if (commands?.length) {
             for (const cmd of commands) {
                 Interpreter.run({
