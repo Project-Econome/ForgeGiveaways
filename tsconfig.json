@@ -1,17 +1,35 @@
 {
     "compilerOptions": {
-        "target": "ES2022",
-        "module": "CommonJS",
-        "rootDir": "src",
-        "outDir": "lib",
+        "alwaysStrict": true,
         "baseUrl": "./",
-        "resolveJsonModule": true,
         "declaration": true,
-        "declarationMap": true,
-        "sourceMap": true,
+        "incremental": true,
         "esModuleInterop": true,
         "forceConsistentCasingInFileNames": true,
+        "module": "CommonJS",
+        "outDir": "dist",
+        "paths": {
+            "@types": ["src/index", "dist/index.d.ts", "node_modules/@types"],
+            "index": ["src/index", "dist/index"]
+        },
+        "resolveJsonModule": true,
+        "rootDir": "src",
+        "skipDefaultLibCheck": true,
+        "skipLibCheck": true,
         "strict": true,
-        "skipLibCheck": true
-    }
+        "target": "ES2020",
+        "typeRoots": [
+            "node_modules/@types",
+            "src/index.ts",
+            "dist/index.d.ts"
+        ]
+    },
+    "include": [
+        "./src/**/*.ts"
+    ],
+    "exclude": [
+        "/dist",
+        "/node_modules",
+        "/test"
+    ]
 }

@@ -1,33 +1,23 @@
 {
-  "name": "forgegiveaways",
+  "name": "forgegw",
   "version": "0.0.1",
-  "description": "ForgeGiveaways is a package that extends the functionality of ForgeScript.",
-  "main": "./lib/index.js",
+  "description": "",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
-    "preinstall": "tsc",
-    "compile": "tsc -p tsconfig.json -w"
+    "watch": "tsc -w",
+    "build": "tsc",
+    "test": "node test"
   },
   "keywords": [],
   "author": "Cyberghxst",
   "license": "MIT",
-  "packageManager": "pnpm@8.1.1",
-  "publishConfig": {
-    "access": "public",
-    "tag": "latest"
-  },
   "devDependencies": {
-    "@types/node": "^20.6.0",
-    "@typescript-eslint/eslint-plugin": "^6.6.0",
-    "@typescript-eslint/parser": "^6.6.0",
-    "discord.js": "^14.13.0",
-    "dotenv": "^16.3.1",
-    "eslint": "^8.49.0",
-    "tslib": "^2.6.2",
-    "typedoc": "^0.25.1",
-    "typescript": "^5.2.2"
+    "@types/node": "^20.10.6",
+    "typescript": "^5.3.3"
   },
   "dependencies": {
-    "forgescript": "^1.0.4",
-    "tiny-typed-emitter": "^2.1.0"
+    "discord-giveaways-super": "^1.0.9",
+    "forgescript": "github:tryforge/ForgeScript#dev"
   }
 }

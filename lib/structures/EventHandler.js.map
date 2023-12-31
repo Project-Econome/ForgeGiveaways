@@ -1,1 +1,0 @@
-{"version":3,"file":"EventHandler.js","sourceRoot":"","sources":["../../src/structures/EventHandler.ts"],"names":[],"mappings":";;;AACA,6CAA4D;AAE5D,MAAa,YAA4C,SAAQ,8BAAkC;IAC/F,QAAQ,CAAC,MAAmB;QACxB,2BAA2B;QAC3B,aAAa;QACb,MAAM,CAAC,EAAE,CAAC,IAAI,CAAC,IAAI,EAAE,CAAC,GAAG,IAAI,EAAE,EAAE,CAAC,IAAI,CAAC,QAAQ,CAAC,GAAG,IAAI,CAAC,CAAC,CAAC;IAC9D,CAAC;CACJ;AAND,oCAMC"}

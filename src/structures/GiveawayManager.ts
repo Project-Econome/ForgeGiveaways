@@ -1,33 +1,35 @@
-import { EventManager, ForgeClient, ForgeExtension, FunctionManager } from "forgescript";
-import { GiveawayManager as PrimitiveManager } from "discordjs-giveaways";
+import { DatabaseType, Giveaways, IDatabaseStructure, IGiveawaysConfiguration } from 'discord-giveaways-super'
+import { ForgeClient, ForgeExtension } from 'forgescript'
+import PACKAGE from '../../package.json'
 
 export class GiveawayManager extends ForgeExtension {
-    // Extension metadata.
-    name = "ForgeGiveaways";
-    description = "Handle giveaways easily.";
-    version = "0.0.1";
+    name: string = 'ForgeGiveaway'
+    description: string = ''
+    version: string = PACKAGE.version
+    #path: `${string}.json`
+    #wrapper: Giveaways<DatabaseType.JSON, `${string}.json`, IDatabaseStructure> | null
 
-    public manager: PrimitiveManager<"json"> | null;
-    private options: { path: `./${string}.json` } | undefined;
-    constructor(options?: { path: `./${string}.json` }) {
-        super();
-        this.manager = null;
-        this.options = options;
+    /**
+     * Extension options.
+     */
+    constructor(path: `${string}.json`) {
+        super()
+        this.#path = path
+        this.#wrapper = null
     }
 
+    /**
+     * Starts the extension setup.
+     * @param client - ForgeClient instance.
+     */
     init(client: ForgeClient) {
-        // Loading built-in events.
-        EventManager.load("giveaway", `${__dirname.replace("structures", "events")}`);
-
-        // Loading built-in functions.
-        FunctionManager.load(`${__dirname.replace("structures", "functions")}`);
-
-        // Data assignment.
-        this.manager = new PrimitiveManager(client, {
-            mode: "json",
-            path: this.options?.path ?? "./giveaways.json"
-        });
-        this.manager.start();
-        client.giveawayManager = this;
+        client.giveawayManager = this.#wrapper
+        this.#wrapper = new Giveaways(client, {
+            connection: {
+                path: this.#path
+            },
+            database: DatabaseType.JSON
+        })
+        this.load(__dirname.replace('structures', 'natives'))
     }
 }
