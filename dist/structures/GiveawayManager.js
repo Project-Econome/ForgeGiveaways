@@ -13,24 +13,29 @@ var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
-var _GiveawayManager_path, _GiveawayManager_wrapper;
+var _GiveawayManager_options, _GiveawayManager_path, _GiveawayManager_wrapper;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.GiveawayManager = void 0;
 const discord_giveaways_super_1 = require("discord-giveaways-super");
 const forgescript_1 = require("forgescript");
+const GiveawayCommandManager_1 = require("./GiveawayCommandManager");
 const package_json_1 = __importDefault(require("../../package.json"));
+const resolve = (arg, to) => arg.replace('structures', to);
+const GIVEAWAY_STORAGE_NAME = 'giveaway';
 class GiveawayManager extends forgescript_1.ForgeExtension {
     /**
      * Extension options.
      */
-    constructor(path) {
+    constructor(options) {
         super();
-        this.name = 'ForgeGiveaway';
+        this.name = 'ForgeGiveaways';
         this.description = '';
         this.version = package_json_1.default.version;
+        _GiveawayManager_options.set(this, void 0);
         _GiveawayManager_path.set(this, void 0);
         _GiveawayManager_wrapper.set(this, void 0);
-        __classPrivateFieldSet(this, _GiveawayManager_path, path, "f");
+        __classPrivateFieldSet(this, _GiveawayManager_options, options, "f");
+        __classPrivateFieldSet(this, _GiveawayManager_path, options.path, "f");
         __classPrivateFieldSet(this, _GiveawayManager_wrapper, null, "f");
     }
     /**
@@ -38,15 +43,22 @@ class GiveawayManager extends forgescript_1.ForgeExtension {
      * @param client - ForgeClient instance.
      */
     init(client) {
-        client.giveawayManager = __classPrivateFieldGet(this, _GiveawayManager_wrapper, "f");
+        GiveawayManager.Client = client;
+        client.giveawayManager = {
+            core: __classPrivateFieldGet(this, _GiveawayManager_wrapper, "f"),
+            commands: new GiveawayCommandManager_1.GiveawayCommandManager(client)
+        };
         __classPrivateFieldSet(this, _GiveawayManager_wrapper, new discord_giveaways_super_1.Giveaways(client, {
             connection: {
                 path: __classPrivateFieldGet(this, _GiveawayManager_path, "f")
             },
             database: discord_giveaways_super_1.DatabaseType.JSON
         }), "f");
-        this.load(__dirname.replace('structures', 'natives'));
+        forgescript_1.EventManager.load(GIVEAWAY_STORAGE_NAME, resolve(__dirname, 'events'));
+        this.load(resolve(__dirname, 'natives'));
+        client.events.load(GIVEAWAY_STORAGE_NAME, ...(__classPrivateFieldGet(this, _GiveawayManager_options, "f").events ?? []));
     }
 }
 exports.GiveawayManager = GiveawayManager;
-_GiveawayManager_path = new WeakMap(), _GiveawayManager_wrapper = new WeakMap();
+_GiveawayManager_options = new WeakMap(), _GiveawayManager_path = new WeakMap(), _GiveawayManager_wrapper = new WeakMap();
+GiveawayManager.Client = null;
