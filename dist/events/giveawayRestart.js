@@ -4,10 +4,10 @@ const GiveawayEventManager_1 = require("../structures/GiveawayEventManager");
 const GiveawayManager_1 = require("../structures/GiveawayManager");
 const forgescript_1 = require("forgescript");
 exports.default = new GiveawayEventManager_1.GiveawayEventHandler({
-    name: 'giveawayStart',
-    description: 'Emitted when a giveaway starts.',
+    name: 'giveawayRestart',
+    description: 'Emitted when a giveaway is restarted.',
     listener: async function (giveaway) {
-        const commands = GiveawayManager_1.GiveawayManager.Client?.giveawayManager?.commands.get('giveawayStart');
+        const commands = GiveawayManager_1.GiveawayManager.Client?.giveawayManager?.commands.get('giveawayRestart');
         if (commands?.length) {
             for (const command of commands) {
                 forgescript_1.Interpreter.run({
