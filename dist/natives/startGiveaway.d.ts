@@ -4,19 +4,19 @@ declare const _default: NativeFunction<[{
     description: string;
     rest: false;
     required: true;
-    type: ArgType.String;
+    type: ArgType.Guild;
 }, {
     name: string;
     description: string;
     rest: false;
     required: true;
-    type: ArgType.String;
+    type: ArgType.Channel;
 }, {
     name: string;
     description: string;
     rest: false;
     required: true;
-    type: ArgType.String;
+    type: ArgType.Member;
 }, {
     name: string;
     description: string;

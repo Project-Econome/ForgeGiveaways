@@ -31,6 +31,7 @@ class GiveawayManager extends forgescript_1.ForgeExtension {
         this.name = 'ForgeGiveaways';
         this.description = '';
         this.version = package_json_1.default.version;
+        this.targetVersions = ['1.4.0'];
         _GiveawayManager_options.set(this, void 0);
         _GiveawayManager_path.set(this, void 0);
         _GiveawayManager_wrapper.set(this, void 0);
@@ -43,17 +44,18 @@ class GiveawayManager extends forgescript_1.ForgeExtension {
      * @param client - ForgeClient instance.
      */
     init(client) {
-        GiveawayManager.Client = client;
-        client.giveawayManager = {
-            core: __classPrivateFieldGet(this, _GiveawayManager_wrapper, "f"),
-            commands: new GiveawayCommandManager_1.GiveawayCommandManager(client)
-        };
         __classPrivateFieldSet(this, _GiveawayManager_wrapper, new discord_giveaways_super_1.Giveaways(client, {
             connection: {
                 path: __classPrivateFieldGet(this, _GiveawayManager_path, "f")
             },
             database: discord_giveaways_super_1.DatabaseType.JSON
         }), "f");
+        GiveawayManager.Client = client;
+        client.giveawayManager = {
+            core: __classPrivateFieldGet(this, _GiveawayManager_wrapper, "f"),
+            commands: new GiveawayCommandManager_1.GiveawayCommandManager(client),
+            options: __classPrivateFieldGet(this, _GiveawayManager_options, "f")
+        };
         forgescript_1.EventManager.load(GIVEAWAY_STORAGE_NAME, resolve(__dirname, 'events'));
         this.load(resolve(__dirname, 'natives'));
         client.events.load(GIVEAWAY_STORAGE_NAME, ...(__classPrivateFieldGet(this, _GiveawayManager_options, "f").events ?? []));

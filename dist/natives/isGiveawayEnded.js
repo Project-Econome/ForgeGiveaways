@@ -5,6 +5,7 @@ exports.default = new forgescript_1.NativeFunction({
     name: '$isGiveawayEnded',
     description: 'Check if the giveaway ID is ended.',
     unwrap: true,
+    brackets: true,
     args: [
         {
             name: 'giveaway ID',

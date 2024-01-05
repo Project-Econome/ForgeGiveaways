@@ -4,6 +4,7 @@ export default new NativeFunction({
     name: '$endGiveaway',
     description: 'Ends a giveaway.',
     unwrap: true,
+    brackets: true,
     args: [
         {
             name: 'giveaway ID',

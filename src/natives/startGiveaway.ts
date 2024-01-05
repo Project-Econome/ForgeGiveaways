@@ -1,9 +1,11 @@
+import { IEmbedStringsDefinitions } from 'discord-giveaways-super'
 import { ArgType, NativeFunction } from 'forgescript'
 
 export default new NativeFunction({
     name: '$startGiveaway',
     description: 'Starts a giveaway.',
     unwrap: true,
+    brackets: true,
     args: [
         {
             name: 'guild ID',
@@ -48,7 +50,7 @@ export default new NativeFunction({
             type: ArgType.Number
         }
     ],
-    execute: async function(ctx, [
+    async execute(ctx, [
         guild,
         channel,
         host,
@@ -62,7 +64,8 @@ export default new NativeFunction({
             hostMemberID: host.id,
             time: duration,
             prize,
-            winnersCount: winners ?? 1
+            winnersCount: winners ?? 1,
+            defineEmbedStrings: ctx.client.giveawayManager.options.defineEmbedStrings
         })
 
         return this.success(giveaway?.id)

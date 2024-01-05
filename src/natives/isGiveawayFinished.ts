@@ -4,6 +4,7 @@ export default new NativeFunction({
     name: '$isGiveawayFinished',
     description: 'Check if the giveaway ID is finished.',
     unwrap: true,
+    brackets: true,
     args: [
         {
             name: 'giveaway ID',
