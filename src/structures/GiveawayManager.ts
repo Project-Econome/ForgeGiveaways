@@ -1,11 +1,11 @@
 import { DatabaseType, Giveaways, IDatabaseStructure, IEmbedStringsDefinitions, IGiveawayButtons, IGiveawaysEvents, IGiveaway } from 'discord-giveaways-super'
 import { EventManager, ForgeClient, ForgeExtension } from 'forgescript'
 import { GiveawayCommandManager } from './GiveawayCommandManager'
+import { GIVEAWAY_STORAGE_NAME } from '../index'
 import PACKAGE from '../../package.json'
 import { User } from 'discord.js'
 
 const resolve = (arg: string, to: string) => arg.replace('structures', to)
-const GIVEAWAY_STORAGE_NAME = 'giveaway'
 
 export interface IGiveawayManagerOptions {
     events?: (keyof IGiveawaysEvents<DatabaseType.JSON>)[]
@@ -22,9 +22,12 @@ export class GiveawayManager extends ForgeExtension {
     description: string = ''
     version: string = PACKAGE.version
     targetVersions: string[] = ['1.4.0']
-    #options: IGiveawayManagerOptions
+
+    client: ForgeClient | null
+    commands: GiveawayCommandManager | null
+    options: IGiveawayManagerOptions
     #path: `${string}.json`
-    #wrapper: Giveaways<DatabaseType.JSON, `${string}.json`, IDatabaseStructure> | null
+    self: Giveaways<DatabaseType.JSON, `${string}.json`, IDatabaseStructure> | null
     static Client: ForgeClient | null = null
 
     /**
@@ -32,9 +35,11 @@ export class GiveawayManager extends ForgeExtension {
      */
     constructor(options: IGiveawayManagerOptions) {
         super()
-        this.#options = options
+        this.client = null
+        this.commands = null
+        this.options = options
         this.#path = options.path
-        this.#wrapper = null
+        this.self = null
     }
 
     /**
@@ -42,20 +47,24 @@ export class GiveawayManager extends ForgeExtension {
      * @param client - ForgeClient instance.
      */
     init(client: ForgeClient) {
-        this.#wrapper = new Giveaways(client, {
+        this.self = new Giveaways(client, {
             connection: {
                 path: this.#path
             },
             database: DatabaseType.JSON
         })
+        this.commands = new GiveawayCommandManager(client)
         GiveawayManager.Client = client
-        client.giveawayManager = {
-            core: this.#wrapper,
-            commands: new GiveawayCommandManager(client),
-            options: this.#options
-        }
+        client.giveawayManager = this
+
         EventManager.load(GIVEAWAY_STORAGE_NAME, resolve(__dirname, 'events'))
         this.load(resolve(__dirname, 'natives'))
-        client.events.load(GIVEAWAY_STORAGE_NAME, ...(this.#options.events ?? []))
+
+        if (this.options.events?.length) {
+            client.events.load(
+                GIVEAWAY_STORAGE_NAME,
+                this.options.events
+            )
+        }
     }
 }

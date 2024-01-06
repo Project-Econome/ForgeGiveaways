@@ -7,7 +7,7 @@ exports.default = new GiveawayEventManager_1.GiveawayEventHandler({
     name: 'giveawayRestart',
     description: 'Emitted when a giveaway is restarted.',
     listener: async function (giveaway) {
-        const commands = GiveawayManager_1.GiveawayManager.Client?.giveawayManager?.commands.get('giveawayRestart');
+        const commands = GiveawayManager_1.GiveawayManager.Client?.giveawayManager?.commands?.get('giveawayRestart');
         if (commands?.length) {
             for (const command of commands) {
                 forgescript_1.Interpreter.run({

@@ -1,9 +1,2 @@
-import { ArgType, NativeFunction } from 'forgescript';
-declare const _default: NativeFunction<[{
-    name: string;
-    description: string;
-    rest: false;
-    required: true;
-    type: ArgType.Number;
-}], true>;
+declare const _default: any;
 export default _default;

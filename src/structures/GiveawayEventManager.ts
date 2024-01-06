@@ -15,6 +15,6 @@ export class GiveawayEventHandler<
      * @param client - ForgeClient instance.
      */
     register(client: ForgeClient) {
-        client.giveawayManager?.core?.on(this.name, this.listener as any)
+        client.giveawayManager?.self?.on(this.name, this.listener as any)
     }
 }

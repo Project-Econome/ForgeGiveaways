@@ -1,7 +1,7 @@
 {
   "name": "forge-gw",
   "version": "0.0.1",
-  "description": "",
+  "description": "Manage and handle Discord giveaways with ease.",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
@@ -10,7 +10,12 @@
     "test": "node test",
     "buildmeta": "node dist/generators/index.js"
   },
-  "keywords": [],
+  "keywords": [
+    "forgescript",
+    "botforge",
+    "giveaways",
+    "discord"
+  ],
   "author": "Cyberghxst",
   "license": "MIT",
   "devDependencies": {

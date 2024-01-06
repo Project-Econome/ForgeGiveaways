@@ -6,7 +6,7 @@ export default new NativeFunction({
     unwrap: true,
     execute: async function(ctx) {
         return this.success(
-            ctx.client.giveawayManager?.core?.getAll().map(g => g.id).join(',')
+            ctx.client.giveawayManager?.self?.getAll().map(g => g.id).join(',')
         )
     }
 })

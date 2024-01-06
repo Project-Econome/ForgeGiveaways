@@ -58,7 +58,7 @@ export default new NativeFunction({
         prize,
         winners
     ]) {
-        const giveaway = await ctx.client.giveawayManager?.core?.start({
+        const giveaway = await ctx.client.giveawayManager?.self?.start({
             guildID: guild.id,
             channelID: channel.id,
             hostMemberID: host.id,

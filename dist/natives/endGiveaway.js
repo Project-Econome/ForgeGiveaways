@@ -16,7 +16,7 @@ exports.default = new forgescript_1.NativeFunction({
         },
     ],
     execute: async function (ctx, [id]) {
-        const gw = ctx.client.giveawayManager?.core?.get(id);
+        const gw = ctx.client.giveawayManager?.self?.get(id);
         if (!gw)
             this.error(forgescript_1.ErrorType.Custom, 'Invalid giveaway ID provided.');
         if (gw?.isRunning())

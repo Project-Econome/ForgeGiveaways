@@ -7,7 +7,7 @@ export default new GiveawayEventHandler<'giveawayEnd'>({
     name: 'giveawayEnd',
     description: 'Emitted when a giveaway ends.',
     listener: async function(giveaway: Giveaway<DatabaseType.JSON>) {
-        const commands = GiveawayManager.Client?.giveawayManager?.commands.get('giveawayEnd')
+        const commands = GiveawayManager.Client?.giveawayManager?.commands?.get('giveawayEnd')
 
         if (commands?.length) {
             for (const command of commands) {

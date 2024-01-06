@@ -7,7 +7,7 @@ export default new GiveawayEventHandler<'giveawayStart'>({
     name: 'giveawayStart',
     description: 'Emitted when a giveaway starts.',
     listener: async function(giveaway: Giveaway<DatabaseType.JSON>) {
-        const commands = GiveawayManager.Client?.giveawayManager?.commands.get('giveawayStart')
+        const commands = GiveawayManager.Client?.giveawayManager?.commands?.get('giveawayStart')
 
         if (commands?.length) {
             for (const command of commands) {

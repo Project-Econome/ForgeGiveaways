@@ -16,7 +16,7 @@ export default new NativeFunction({
     ],
     execute: async function(ctx, [id]) {
         return this.success(
-            !!ctx.client.giveawayManager?.core?.get(id)
+            !!ctx.client.giveawayManager?.self?.get(id)
         )
     }
 })

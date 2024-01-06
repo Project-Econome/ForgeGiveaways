@@ -16,6 +16,6 @@ exports.default = new forgescript_1.NativeFunction({
         },
     ],
     execute: async function (ctx, [id]) {
-        return this.success(!!ctx.client.giveawayManager?.core?.get(id));
+        return this.success(!!ctx.client.giveawayManager?.self?.get(id));
     }
 });

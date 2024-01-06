@@ -6,6 +6,6 @@ exports.default = new forgescript_1.NativeFunction({
     description: 'Check if the giveaway ID exists.',
     unwrap: true,
     execute: async function (ctx) {
-        return this.success(ctx.client.giveawayManager?.core?.getAll().map(g => g.id).join(','));
+        return this.success(ctx.client.giveawayManager?.self?.getAll().map(g => g.id).join(','));
     }
 });

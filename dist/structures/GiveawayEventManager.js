@@ -8,7 +8,7 @@ class GiveawayEventHandler extends forgescript_1.BaseEventHandler {
      * @param client - ForgeClient instance.
      */
     register(client) {
-        client.giveawayManager?.core?.on(this.name, this.listener);
+        client.giveawayManager?.self?.on(this.name, this.listener);
     }
 }
 exports.GiveawayEventHandler = GiveawayEventHandler;
