@@ -1,8 +1,12 @@
-# Forge Giveaways
-Manage and Handle Discord giveaways with ease.
+<h1 align="center">Forge Giveaways</h1>
+<p align="center">Manage and Handle Discord giveaways with ease.</p>
 
-## Requirements
-This extension requires ForgeScript 1.4.0 to work.
+---
+
+> [!CAUTION]
+> This extension requires ForgeScript 1.4.0 to work.
+
+---
 
 ## Example Setup
 ```js

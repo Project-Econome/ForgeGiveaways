@@ -1,6 +1,6 @@
 {
   "name": "forge-gw",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Manage and handle Discord giveaways with ease.",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -22,10 +22,10 @@
     "@types/node": "^20.10.6",
     "discord.js": "^14.14.1",
     "dotenv": "^16.3.1",
+    "forgescript": "github:tryforge/ForgeScript#dev",
     "typescript": "^5.3.3"
   },
   "dependencies": {
-    "discord-giveaways-super": "^1.0.9",
-    "forgescript": "github:tryforge/ForgeScript#dev"
+    "discord-giveaways-super": "^1.0.9"
   }
 }
